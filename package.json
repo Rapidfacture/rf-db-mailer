@@ -1,0 +1,34 @@
+{
+   "name": "rf-db-mailer",
+   "description": "login for rapidfacture software",
+   "author": {
+      "name": "Maximilian Kanschat"
+   },
+   "version": "0.0.1",
+   "maintainers": [
+      {
+         "name": "maximilian_kanschat",
+         "email": "mk@rapidfacture.com"
+      },
+      {
+         "name": "felix_furtmayr",
+         "email": "ff@rapidfacture.com"
+      }
+   ],
+   "devDependencies": {
+   },
+   "dependencies": {
+      "frontend-dependencies": "1.1.8",
+      "html-to-text": "4.0.0",
+      "nodemailer": "4.6.7"
+   },
+   "frontendDependencies": {
+      "target": "static",
+      "packages": {
+         "mustache": {
+            "version": "2.3.0",
+            "src": "mustache.min.js"
+         }
+   },
+   "license": "UNLICENSED"
+}
