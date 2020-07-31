@@ -31,6 +31,6 @@
             "version": "2.3.0",
             "src": "mustache.min.js"
          }
-   },
+   }
    "license": "UNLICENSED"
 }
