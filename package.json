@@ -16,8 +16,8 @@
       }
    ],
    "devDependencies": {
-       "grunt": "1.0.1",
-       "grunt-eslint": "20.1.0"
+      "grunt": "1.0.1",
+      "grunt-eslint": "20.1.0"
    },
    "dependencies": {
       "frontend-dependencies": "1.1.8",
@@ -31,6 +31,7 @@
             "version": "2.3.0",
             "src": "mustache.min.js"
          }
-   }
+      }
+   },
    "license": "UNLICENSED"
 }
