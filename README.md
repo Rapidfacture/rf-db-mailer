@@ -1,18 +1,14 @@
 # rf-db-mailer
 
 
-login for rapidfacture software
+send mail from db for rapidfacture software
 
 ## overview
 
 ### Backend
-* GET and POST for login and register
-
-
-### Frontend
-* Views for login and register
-* Views for verify Newsletter and verifyUser
-* Views for logout and reset
+* Get mail templates and translations form db
+* Merge templates and translations
+* Send mail to customer
 
 ## future ideas - cleanup
 

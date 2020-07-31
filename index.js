@@ -1,3 +1,4 @@
+
 /** rf-db-mailer
  * @desc
  * Fetch templates and translations from db, bulid and send mails.
