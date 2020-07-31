@@ -4,7 +4,7 @@
    "author": {
       "name": "Maximilian Kanschat"
    },
-   "version": "0.0.1",
+   "version": "0.0.2",
    "maintainers": [
       {
          "name": "maximilian_kanschat",
@@ -20,18 +20,9 @@
       "grunt-eslint": "20.1.0"
    },
    "dependencies": {
-      "frontend-dependencies": "1.1.8",
       "html-to-text": "4.0.0",
+      "mustache": "2.3.0",
       "nodemailer": "4.6.7"
-   },
-   "frontendDependencies": {
-      "target": "static",
-      "packages": {
-         "mustache": {
-            "version": "2.3.0",
-            "src": "mustache.min.js"
-         }
-      }
    },
    "license": "UNLICENSED"
 }

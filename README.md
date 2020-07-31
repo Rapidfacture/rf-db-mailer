@@ -1,17 +1,11 @@
 # rf-db-mailer
+Get mail templates/translations via mongoose multi, insert translations in templates with mustache, send mail with nodemailer.
 
-
-send mail from db for rapidfacture software
-
-## overview
-
-### Backend
-* Get mail templates and translations form db
-* Merge templates and translations
-* Send mail to customer
-
-## future ideas - cleanup
-
+## methodes
+* start
+* reloadTemplates
+* getTemplate
+* send
 
 ## Licence
 
