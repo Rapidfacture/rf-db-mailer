@@ -201,6 +201,7 @@ function send (template, message, callback) {
          function (err, info) {
             if (err) {
                log.error('error in sendMail: ', err);
+               if (err.message) err = err.message;
             } else {
                log.success('successfull sent mail');
             }
