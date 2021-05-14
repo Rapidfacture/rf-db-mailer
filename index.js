@@ -56,7 +56,7 @@ function start (options, database) {
    // options passed when creating an instance
    opts = {
       defaultLanguage: options.defaultLanguage || 'de',
-      transporter: nodemailer.createTransport(options.transporter),
+      transporter: options.transporter,
       translations: options.translations || {}
    };
 
@@ -183,29 +183,33 @@ function send (template, message, callback) {
       return callback(errMsg);
    }
 
+   let transporterOpts = JSON.parse(JSON.stringify(message.transporter || opts.transporter));
+   delete message.transporter; // don't forward critical data like
+   if (!transporterOpts) return log.error('no transporter defined, aborting');
 
    getTemplate(template, function (err, mailContent) {
-
+      // housekeeping
       if (err) {
          log.error('error in getting template: ', err);
          return callback(err);
       }
-
       message.subject = message.subject || mailContent.subject;
       message.html = message.html || mailContent.html;
       message.text = message.text || mailContent.text;
 
       // send mail with nodemailer
       // options: https://nodemailer.com/message/
-      opts.transporter.sendMail(message,
-         function (err, info) {
-            if (err) {
-               log.error('error in sendMail: ', err);
-               if (err.message) err = err.message;
-            } else {
-               log.success('successfull sent mail');
-            }
-            callback(err, info);
-         });
+      nodemailer
+         .createTransport(transporterOpts)
+         .sendMail(message,
+            function (err, info) {
+               if (err) {
+                  log.error('error in sendMail: ', err);
+                  if (err.message) err = err.message;
+               } else {
+                  log.success('successfull sent mail');
+               }
+               callback(err, info);
+            });
    });
 }
