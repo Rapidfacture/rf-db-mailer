@@ -15,6 +15,10 @@
          "email": "ff@rapidfacture.com"
       }
    ],
+   "bugs": {
+     "url": "https://github.com/rapidfacture/rf-db-mailer/issues"
+   },
+   "homepage": "https://github.com/rapidfacture/rf-db-mailer#readme",
    "devDependencies": {
       "grunt": "1.0.1",
       "grunt-eslint": "20.1.0"
