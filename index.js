@@ -12,10 +12,7 @@
 const mustache = require('mustache');
 const nodemailer = require('nodemailer');
 const htmlToText = require('html-to-text');
-
 let log = require('rf-log').customPrefixLogger('[rf-db-template-mailer]');
-
-
 
 let opts = {}; // options passed when creating an instance
 let db = {};
@@ -57,7 +54,8 @@ function start (options, database) {
    opts = {
       defaultLanguage: options.defaultLanguage || 'de',
       transporter: options.transporter,
-      translations: options.translations || {}
+      translations: options.translations || {},
+      dbName: options.dbName || 'global'
    };
 
    reloadTemplates();
@@ -73,7 +71,7 @@ function reloadTemplates () {
 
 
 function getTranslations (callback) {
-   db.global.translations
+   db[opts.dbName].translations
       .find({})
       .exec(function (err, translationsList) {
          if (err) {
@@ -89,7 +87,7 @@ function getTranslations (callback) {
 }
 
 function getTemplates (callback) {
-   db.global.mailtemplates
+   db[opts.dbName].mailtemplates
       .find({type: 'email'})
       .exec(function (err, templates) {
          if (err) {
