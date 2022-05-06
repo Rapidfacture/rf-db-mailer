@@ -17,7 +17,7 @@ let log = require('rf-log').customPrefixLogger('[rf-db-template-mailer]');
 let opts = {}; // options passed when creating an instance
 let db = {};
 let translations = []; // json tranlation files
-let mailtemplates = [];
+let templates = [];
 let subjects = [];
 
 
@@ -87,16 +87,16 @@ function getTranslations (callback) {
 }
 
 function getTemplates (callback) {
-   db[opts.dbName].mailtemplates
+   db[opts.dbName].templates
       .find({type: 'email'})
-      .exec(function (err, templates) {
+      .exec(function (err, docs) {
          if (err) {
             log.error(err);
             callback(err);
          } else {
-            templates = templates || [];
-            templates.forEach(function (template) {
-               mailtemplates[template.name] = template.text;
+            docs = docs || [];
+            docs.forEach(function (template) {
+               templates[template.name] = template.text;
                subjects[template.name] = template.subject;
             });
          }
@@ -121,7 +121,7 @@ function getTemplate (templateOps, callback) {
    let translation = translations[lang];
 
    let tmplName = templateOps.name;
-   let template = mailtemplates[tmplName];
+   let template = templates[tmplName];
 
    // get a valid language
    let langObj, message = {};
@@ -144,7 +144,7 @@ function getTemplate (templateOps, callback) {
    let compileData = {
       data: templateOps.data,
       lang: langObj,
-      templates: mailtemplates
+      templates: templates
    };
 
    // compile subject with mustache
