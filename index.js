@@ -160,6 +160,9 @@ function getTemplate (templateOps, callback) {
    // compile html message with mustache
    if (template) {
       message.html = mustache.render(template, compileData); // json inserted in "{{ }}"
+
+      // render again if template references templates
+      message.html = mustache.render(message.html, compileData);
    } else { // no template => return template subject
       message.html = message.subject;
    }
