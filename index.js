@@ -89,7 +89,7 @@ function getTranslations (callback) {
 }
 
 function getTemplates (callback) {
-   db.global.mailtemplates
+   db.global.templates
       .find({type: 'email'})
       .exec(function (err, templates) {
          if (err) {
